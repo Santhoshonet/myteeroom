@@ -1,14 +1,13 @@
 class EmailController < ApplicationController
   def new
     @email = Email.new
-    render :layout => false
   end
   def add
     unless params[:email].nil?
       @email = Email.new
       @email.email = params[:email].to_s
       unless @email.save
-        render :action => "new", :layout => false
+        render :action => "new"
         return
       end
       redirect_to :action => "references" , :id => @email.id
@@ -16,7 +15,6 @@ class EmailController < ApplicationController
   end
   def references
     @error = ""
-    render :layout => false
   end
   def addreferences
     @error = ""
@@ -37,6 +35,6 @@ class EmailController < ApplicationController
         @error = "An error occurred, please retry the page and continue. "
       end
     end
-    render :action => "references" , :layout => false
+    render :action => "references"
   end
 end

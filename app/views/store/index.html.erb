@@ -7,7 +7,6 @@
           <div class="box-content">
             <ul id="myRoundabout">
 						 	<% @product_header_previews.each do |preview| %>
-                             %>
 						 		<li>
 								 <div class="prod_holder">
 									 <%= link_to (image_tag preview.smallPreview), ('store/'+ preview.id.to_s) %>
@@ -40,7 +39,7 @@
             <div class="box-product fixed">
               <% @products.each do |product| %>
                 <div class="prod_hold">
-								 	<%= link_to content_tag(:span,(image_tag product.image_url), :class => "image"), ('store/'+ product.id.to_s),:class => "wrap_link" %>
+                  <%= link_to content_tag(:span,(image_tag product.image_url), :class => "image"), ('store/'+ product.id.to_s),:class => "wrap_link" %>
                   <div class="pricetag_small">
                     <span class="price">$ <%= product.price %></span>
                   </div>
