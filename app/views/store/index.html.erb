@@ -1,0 +1,60 @@
+<!-- CONTENT -->
+  <div id="content_holder" class="fixed">
+    <div class="inner">
+      <div id="content">
+        <div class="box featured-box">
+          <h2 class="heading-title"><span>Featured Products</span></h2>
+          <div class="box-content">
+            <ul id="myRoundabout">
+						 	<% @product_header_previews.each do |preview| %>
+                             %>
+						 		<li>
+								 <div class="prod_holder">
+									 <%= link_to (image_tag preview.smallPreview), ('store/'+ preview.id.to_s) %>
+									 <h3>Flaming heart</h3>
+								 </div>
+								 <span class="pricetag">RM <%= preview.price %></span>
+								</li>
+							<% end %>
+            </ul>
+            <a href="#" class="previous_round">Previous</a> <a href="#" class="next_round">Next</a> </div>
+        </div>
+        <div class="box">
+          <h2 class="heading-title"><span>Welcome to myteeroom</span></h2>
+          <div class="box-content">
+            <p>
+						 Welcome to myteeroom, a place to get beautiful tees. At myteeroom you can also submit your own designs
+						 and let your friends vote on it. We will then print the most popular designs
+            </p>
+          </div>
+        </div>
+        <div class="box">
+          <div class="banner">
+            <div><%= image_tag "banner1.jpg" %></div>
+            <div><%= image_tag "banner2.jpg" %></div>
+          </div>
+        </div>
+        <div class="box">
+          <h2 class="heading-title"><span>Latest Products</span></h2>
+          <div class="box-content">
+            <div class="box-product fixed">
+              <% @products.each do |product| %>
+                <div class="prod_hold">
+								 	<%= link_to content_tag(:span,(image_tag product.image_url), :class => "image"), ('store/'+ product.id.to_s),:class => "wrap_link" %>
+                  <div class="pricetag_small">
+                    <span class="price">$ <%= product.price %></span>
+                  </div>
+                  <div class="info">
+                    <h3><%= product.title %></h3>
+                    <p><%= product.description %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END OF CONTENT -->

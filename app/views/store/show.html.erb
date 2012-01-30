@@ -1,0 +1,226 @@
+<% content_for :head do %>
+<!-- Tipsy -->
+<%= javascript_include_tag "tipsy/jquery.tipsy" %>
+<%= javascript_include_tag "tabs"%>
+<%= javascript_include_tag "cart" %>
+<%= stylesheet_link_tag "css.tipsy" %>
+<!-- Modal window -->
+<%= javascript_include_tag "modalWindow/jquery.colorbox-min.js"%>
+<%= stylesheet_link_tag "colorbox.css" %>
+<script>
+		$(document).ready(function(){
+			//Examples of how to assign the ColorBox event to elements
+			$(".inline").colorbox({inline:true, width:"50%"});
+			$(".callbacks").colorbox({
+				onOpen:function(){ alert('onOpen: colorbox is about to open'); },
+				onLoad:function(){ alert('onLoad: colorbox has started to load the targeted content'); },
+				onComplete:function(){ alert('onComplete: colorbox has displayed the loaded content'); },
+				onCleanup:function(){ alert('onCleanup: colorbox has begun the close process'); },
+				onClosed:function(){ alert('onClosed: colorbox has completely closed'); }
+			});
+
+			//Example of preserving a JavaScript event for inline calls.
+			$("#click").click(function(){
+				$('#click').css({"background-color":"#f00", "color":"#fff", "cursor":"inherit"}).text("Open this window again and this message will still be here.");
+				return false;
+			});
+		});
+	</script>
+<% end %>
+<!-- CONTENT -->
+  <div id="content_holder" class="fixed">
+    <div class="inner">
+      <div class="breadcrumb"> <a href="index.html">Home</a> » <a href="category.html">Tees</a> » <%= @product.title
+			%> </div>
+      <h2 class="heading-title"><span><%= @product.title %></span></h2>
+
+      <!-- PRODUCT INFO -->
+      <div class="product-info fixed">
+        <div class="left">
+          <div class="image"> <a href="<%= @product.largePreview%>" class="cloud-zoom" id="zoom1" rel="adjustX: 5,
+          adjustY:0, zoomWidth:550, zoomHeight:400, showTitle: false"> <img src="<%= @product.smallPreview%>"
+																																						alt=''title="<%= @product.title%>" /></a>
+					 <span class="pricetag">RM <%= @product.price %></span> </div>
+          <div class="image-additional">
+            <div class="image_car_holder">
+              <ul class="jcarousel-skin-opencart">
+                <% @tinies.each do |tiny| %>
+                <li><a href='<%= tiny.large_image_url %>' class='cloud-zoom-gallery' title='Thumbnail 1' rel="useZoom:'zoom1', smallImage: '<%= tiny.small_image_url %>' "> <img src="<%= tiny.tinyPreview %>" alt = "Thumbnail 1"/> </a></li>
+                <% end %>
+              </ul>
+            </div>
+            <script type="text/javascript"><!--
+      $('.image-additional ul').jcarousel({
+	  vertical: false,
+	  visible: 4,
+	  scroll: 1
+      });
+      //--></script>
+          </div>
+        </div>
+        <div class="right">
+          <div class="description"><span>Product Code:</span> Product 15<br/>
+            <span>Reward Points:</span> 100<br/>
+            <span>Availability:</span> In Stock
+
+            <!-- AddThis Button BEGIN -->
+          <div class="addthis_toolbox addthis_default_style "><script type="text/javascript">
+      //<![CDATA[
+            document.write('<a class="addthis_button_google_plusone" g:plusone:size="medium"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>');
+      //]]>
+     </script>
+          </div>
+          <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e7280075406aa87"></script>
+          <!-- AddThis Button END -->
+
+          </div>
+          <div class="options">
+            <div class="option" id="option-217"><b><span class="required">*</span> Select Size:</b>
+              <select name="option[217]">
+                <option value=""> --- Please Select --- </option>
+                <option value="4">Small</option>
+                <option value="3">Middle</option>
+                <option value="1">Large</option>
+							 	<option value="1">Extra Large</option>
+							 	<option value="1">Extra Extra Large</option>
+              </select>
+            </div>
+            <div class="option" id="option-223"><b>Select gender:</b>
+              <input type="radio" id="option-value-9" value="9" name="option[223][]"/>
+              <label for="option-value-9">Guy</label>
+              <br/>
+              <input type="radio" id="option-value-10" value="10" name="option[223][]"/>
+              <label for="option-value-10"> Girl </label>
+              <br/>
+            </div>
+          </div>
+          <div class="cart"> <span class="label">Qty:</span>
+            <input type="text" value="1" size="2" name="quantity" id="qty"/>
+            <a href="#inline_content" class="button inline" id="button-cart" title="Add to Cart"><span>Add to
+						 Cart</span></a> <a href="#"
+																																																		class="wish_button" title="Add to Wish List">Add to Wish List</a></div>
+          <div class="tags"> <span class="label">Tags:</span> <a href="#">Dark</a> <a href="#">Animal</a> <a
+									href="#">Grey</a> <a href="#">Available</a> </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <!-- END OF PRODUCT INFO -->
+
+      <div id="content">
+        <div class="box">
+          <h2 class="heading-title"><span>Description</span></h2>
+          <div class="box-content">
+            <p><%= @product.description %></p>
+          </div>
+        </div>
+        <div class="box">
+          <h2 class="heading-title"><span>Comments</span></h2>
+          <div class="box-content box-rating"> <a class="comment_switch" href="#">  </a>
+            <div class="box-comments">
+              <div class="content"> <span>Prashant Angyan | 05/09/2011</span> <img src="image/stars-5.png" alt="3 reviews"/>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              </div>
+              <div class="content"> <span>Ruben Theva | 05/09/2011</span> <img src="image/stars-1.png" alt="3 reviews"/>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              </div>
+              <div class="content"> <span>Prashant Angyan | 05/09/2011</span> <img src="image/stars-4.png" alt="3 reviews"/>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+			 <!--
+        <div class="cat_list">
+          <h2 class="heading-title"><span>Related Products</span></h2>
+          <div class="prod_hold"> <a class="wrap_link" href="product.html">
+            <span class="image"><img src="image/prod_pic1.jpg" alt="myteeroom store" /></span>
+            </a>
+            <div class="pricetag_small"> <span class="old_price">$ 19 999,99</span> <span class="new_price">$ 14 999,99</span> </div>
+            <div class="info">
+              <h3>Very long product name goes here</h3>
+              <p>Suspendisse eget nunc lorem. Sed convallis mattis est, quis dignissim magna varius et.</p>
+              <a class="add_to_cart_small" href="#">Add to cart</a> <a class="wishlist_small" href="#">Wishlist</a> <a class="compare_small" href="#">Compare</a> </div>
+          </div>
+          <div class="prod_hold"> <a class="wrap_link" href="product.html">
+            <span class="image"><img src="image/prod_pic2.jpg" alt="myteeroom store" /></span>
+            </a>
+            <div class="pricetag_small"> <span class="price">$ 147,99</span> </div>
+            <div class="info">
+              <h3>Very long product name goes here</h3>
+              <p>Suspendisse eget nunc lorem. Sed convallis mattis est, quis dignissim magna varius et.</p>
+              <a class="add_to_cart_small" href="#">Add to cart</a> <a class="wishlist_small" href="#">Wishlist</a> <a class="compare_small" href="#">Compare</a> </div>
+          </div>
+          <div class="prod_hold"> <a class="wrap_link" href="product.html">
+            <span class="image"><img src="image/prod_pic3.jpg" alt="myteeroom store" /></span>
+            </a>
+            <div class="pricetag_small"> <span class="price">$ 472,99</span> </div>
+            <div class="info">
+              <h3>Very long product name goes here</h3>
+              <p>Suspendisse eget nunc lorem. Sed convallis mattis est, quis dignissim magna varius et.</p>
+              <a class="add_to_cart_small" href="#">Add to cart</a> <a class="wishlist_small" href="#">Wishlist</a> <a class="compare_small" href="#">Compare</a> </div>
+          </div>
+          <div class="prod_hold"> <a class="wrap_link" href="product.html">
+            <span class="image"><img src="image/prod_pic4.jpg" alt="myteeroom store" /></span>
+            </a>
+            <div class="pricetag_small"> <span class="price">$ 219,99</span> </div>
+            <div class="info">
+              <h3>Very long product name goes here</h3>
+              <p>Suspendisse eget nunc lorem. Sed convallis mattis est, quis dignissim magna varius et.</p>
+              <a class="add_to_cart_small" href="#">Add to cart</a> <a class="wishlist_small" href="#">Wishlist</a> <a class="compare_small" href="#">Compare</a> </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+			 -->
+      </div>
+    </div>
+  </div>
+  <!-- END OF CONTENT -->
+
+<!-- Notice Start -->
+			<div style='display:none'>
+				<div id='inline_content' style='padding:10px; background:#fff;'>
+					<h3>20% discount</h3>
+					<p>We are still setting up a few things. Leave your email address and we will let you know as soon as we launch. We will also give you a 20% discount on anything you buy.</p>
+					<form action="">
+						<label for="email">Email</label>
+						<input type="text">
+						<br/>
+						<br>
+						<div class="left"><a class="button" id="button-review"><span>Submit email</span></a></div>
+					</form>
+				</div>
+			</div>
+	<!-- Notice End -->
+
+<!-- END OF MAIN WRAPPER -->
+<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+<script type="text/javascript" src="http://twitter.com/statuses/user_timeline/json?callback=twitterCallback2&amp;count=3"></script>
+<script type="text/javascript"><!--
+$(document).ready(function() {
+$('#twitter_update_list').cycle({
+		fx: 'fade', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+		next:   '#tweet_next',
+    	prev:   '#tweet_prev'
+		});
+		});
+//--></script>
+<script type="text/javascript"><!--
+$(document).ready(function(){
+
+    $("a.comment_switch").toggle(function(){
+        $(this).addClass("swap");
+        $(".box-rating").fadeOut("fast", function() {
+            $(this).fadeIn("fast").addClass("box-review");
+        });
+    }, function () {
+        $(this).removeClass("swap");
+        $(".box-rating").fadeOut("fast", function() {
+            $(this).fadeIn("fast").removeClass("box-review");
+        });
+    });
+
+});
+//--></script>
+</body>
+</html>
