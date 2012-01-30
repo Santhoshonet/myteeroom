@@ -1,6 +1,6 @@
 class StoreController < ApplicationController
   def index
-	 @product_header_previews = Product.find(1,2)
+	 @product_header_previews = Product.find(1,2,3,4,5,6)
 	 @products = Product.all
   end
   def show
