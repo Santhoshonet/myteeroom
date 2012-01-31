@@ -3,22 +3,21 @@
 	<div id='inline_content' style='padding:10px; background:#fff;'>
         <h3>20% discount</h3>
     	<p>We are still setting up a few things. Leave your email address and we will let you know as soon as we launch. We will also give you a 20% discount on anything you buy.</p>
-        <% if @email.errors.any? %>
-        <p>
-            <h2><%= pluralize(@email.errors.count, "error") %> prohibited this cart from being saved:</h2>
-            <ul>
-                <% @email.errors.full_messages.each do |msg| %>
-                    <li><%= msg %></li>
-                <% end %>
-            </ul>
-        </p>
+        <% error = ""
+           if @email.errors.any? %>
+            <% @email.errors.full_messages.each do |msg|
+             error += msg
+            end %>
         <% end %>
 	    <form action="/email/add">
 	        <label for="email">Email</label>
-		    <input type="text" name="email">
+		    <input type="text" name="email"><label class="error"><%= error %></label>
 		    <br/><br />
-    	    <div class="left"><a class="button" id="button-review" onclick="document.forms[0].submit();" ><span>Submit email</span></a></div>
+    	    <div class="left"><a class="button" id="button-review"  ><span>Submit email</span></a></div>
 	    </form>
     </div>
 </div>
-	<!-- Notice End -->
+<!-- Notice End -->
+<%= javascript_include_tag "jquery-1.5.2.min.js" %>
+<%= javascript_include_tag "JQValidation.js" %>
+<%= javascript_include_tag "email.js" %>

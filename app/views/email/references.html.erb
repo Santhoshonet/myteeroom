@@ -11,25 +11,7 @@
     </li>
     <li>
         <label>Fiend's email</label>
-        <input type="text" name="email[]">
-    </li>
-    <li>
-        <label>Fiend's email</label>
-        <input type="text" name="email[]">
-    </li>
-    <li>
-        <label>Fiend's email</label>
-        <input type="text" name="email[]">
-    </li>
-    <li>
-        <label>Fiend's email</label>
-        <input type="text" name="email[]">
-    </li>
-        <label>Fiend's email</label>
-        <input type="text" name="email[]">
-    <li>
-        <label>Fiend's email</label>
-        <input type="text" name="email[]">
+        <input type="text" name="email[]"><label class="error"></label>
     </li>
     <li>
       <input type="hidden" value="<%= params[:id] %>" name="id" />
@@ -38,3 +20,7 @@
     </li>
   </ul>
 </form>
+
+<%= javascript_include_tag "jquery-1.5.2.min.js" %>
+<%= javascript_include_tag "JQValidation.js" %>
+<%= javascript_include_tag "email_references.js" %>
