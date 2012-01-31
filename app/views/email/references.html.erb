@@ -4,9 +4,10 @@
 	<% unless @error == "" %>
   	<%= @error %>
   <% end %>
-	<label>Fiend's email</label>
-	 <input type="text" name="email[]"><label class="error"></label>
-
+	  <label>Fiend's email</label>
+	  <input type="text" name="email[]"><label class="error"></label>
+      <label>Fiend's email</label>
+	  <input type="text" name="email[]"><label class="error"></label>
       <input type="hidden" value="<%= params[:id] %>" name="id" />
       <input type="submit" value="Add invitees" />
       <input type="button" value="Skip" onclick="alert('add script to close box');" />

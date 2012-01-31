@@ -10,6 +10,7 @@ $(function() {
         var isFormInputsValid = true;
         var elements =  $('input[name="email[]"]');
         var elementsSize = elements.size();
+        alert(elementsSize);
            elements.each(function () {
                // skipping the last element
                if (elements.index($(this)) + 1 < elementsSize )
