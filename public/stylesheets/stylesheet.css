@@ -2830,3 +2830,12 @@ H1.oops
 	width: 300px;
 	padding: 10px;
 }
+.errorinfo
+{
+    border: 1px solid RED;
+}
+.error
+{
+    color :RED;
+    font: 0.6em verdana  ;
+}
