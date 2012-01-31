@@ -1,16 +1,16 @@
-<form action="/email/addreferences" method="post">
+<% content_for :head do %>
+<%= stylesheet_link_tag "notice.css" %>
+<% end %>
+<form action="/email/addreferences" method="post" id='referencesForm'>
  	<h1>Add a 10% discount</h1>
   <p>Invite 5 friends or more and we will give you an additional 10% discount on your purchase when we open</p>
 	<% unless @error == "" %>
   	<%= @error %>
   <% end %>
-	  <label>Fiend's email</label>
-	  <input type="text" name="email[]"><label class="error"></label>
-      <label>Fiend's email</label>
-	  <input type="text" name="email[]"><label class="error"></label>
-      <input type="hidden" value="<%= params[:id] %>" name="id" />
-      <input type="submit" value="Add invitees" />
-      <input type="button" value="Skip" onclick="alert('add script to close box');" />
+	<label>Friend's email</label>
+	<input type="text" name="email[]" class="referencesEmails"><label class="error"></label>
+	<input type="hidden" value="<%= params[:id] %>" name="id" />
+	<div class="left"><a class="button" id="button-review"  ><span>Invite friends</span></a></div>
 </form>
 
 <%= javascript_include_tag "jquery-1.5.2.min.js" %>

@@ -1,5 +1,5 @@
 $(function() {
-    $('input[type="submit"]').click(function() {
+    $('#button-review').click(function() {
         return validateEmails();
     });
     $('form').submit(function() {
@@ -7,18 +7,18 @@ $(function() {
     });
     function validateEmails()
     {
+	$('.error').html('');
         var isFormInputsValid = true;
         var elements =  $('input[name="email[]"]');
         var elementsSize = elements.size();
-        alert(elementsSize);
-           elements.each(function () {
+        elements.each(function () {
                // skipping the last element
                if (elements.index($(this)) + 1 < elementsSize )
                {
                     if(!$(this).validateEmail({ class: "errorinfo", alert:false,focus:true }))
                     {
                         isFormInputsValid = false;
-                        $(this).parent().find('.error').html("input valid email!");
+                        $(this).next().html("input valid email!");
                         return false;
                     }
                }
@@ -34,14 +34,8 @@ $(function() {
     $('input[name="email[]"]').live('focus',function() {
         if ($('input[name="email[]"]').index($(this)) + 1 == $('input[name="email[]"]').size())
         {
-            var reccurence = $(this).parents('li').eq(0);
-            var clone = reccurence.clone();
-            reccurence.after(clone);
-            clone.find('.btnactionremove').remove();
-            clone.append("<span class='btnactionremove'>-</span>");
+            var html = "<label>Friend's email</label><input type='text' name='email[]' class='referencesEmails'><label class='error'></label>";
+	    $(this).next().after(html);
         }
-    });
-    $('.btnactionremove').live('click', function() {
-        $(this).parents('li').eq(0).remove();
     });
 });
