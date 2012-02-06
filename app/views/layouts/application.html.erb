@@ -172,6 +172,13 @@ $('#twitter_update_list').cycle({
 		return setInterval(function() {
 		$('ul#myRoundabout').roundabout_animateToPreviousChild();
 		}, 3000);
+
+        $(document).bind("cbox_complete", function(){
+            var href = $.colorbox.element().attr("href");
+            if (href) {
+                pageTracker._trackPageview(href);
+            }
+        });
 	} 
 </script>
 
