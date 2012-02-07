@@ -1,0 +1,23 @@
+<table>
+    <thead>
+        <tr>
+          <th>Email</th>
+          <th>References</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% Email.all.each do |mail| %>
+            <tr>
+              <td>
+                <%= mail.email %>
+              </td>
+              <td>
+                <%= mail.email_references.each do |references| %>
+                    <%= references.email_address %> <br/>
+                <% end %>
+              </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+

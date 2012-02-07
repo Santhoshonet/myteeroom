@@ -1,7 +1,9 @@
 Myteeroom::Application.routes.draw do
 
   resource :tinies
+
 	match "/store", :to => "store#list", :as => "store"
+
   resources :user_sessions
 
   resources :users
@@ -78,6 +80,7 @@ Myteeroom::Application.routes.draw do
   match "/", :to => "store#index", :as => "root"
   match "/add_to_cart/:product_id", :to => "carts#add_to_cart", :as => "add_to_cart"
   match ':controller(/:action(/:id))'
+  match 'email/list', :to => "email#list", :as => "email_list"
   root :to => 'store#index', :as => 'store'
 
   # See how all your routes lay out with "rake routes"

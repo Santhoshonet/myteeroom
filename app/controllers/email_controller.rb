@@ -1,4 +1,9 @@
 class EmailController < ApplicationController
+  before_filter :validate_user_logged_in , :only => :list
+
+  def list
+  end
+
   def new
     @email = Email.new
   end
